@@ -1,3 +1,50 @@
+# Lightkeeper — Tower Defense
+
+Trabalho prático de **CCC300 · Computação Gráfica e Realidade Virtual (2026/2)** — jogo Tower Defense 2D em Unity.
+
+## Links
+
+- **Executável (download):** _adicionar link (ex.: GitHub Releases)_
+- **Vídeo demonstrativo:** _adicionar link_
+
+## Como jogar
+
+Criaturas sombrias saem da entrada e seguem o caminho até o farol. Construa torres nos pedestais
+para eliminá-las antes que alcancem a base. Eliminar criaturas rende **luz**, o recurso para construir mais torres.
+Fora do alcance das luzes, as criaturas andam mais rápido.
+
+| Ação | Controle |
+|---|---|
+| Construir a torre selecionada | clique / toque num pedestal vazio |
+| Selecionar tipo de torre | botões da HUD ou teclas **1**, **2** |
+| Vender torre (50%) | clique direito na torre, ou botão "Vender" + clique |
+| Pausar | **P** / **Esc** ou botão de pausa |
+
+**Vitória:** resistir a todas as ondas com o mínimo de abates do nível.
+**Derrota:** vida do farol chega a 0, criaturas demais chegam ao farol, ou o tempo acaba.
+
+## Estrutura do código (`Assets/Scripts`)
+
+| Pasta | Scripts | Responsabilidade |
+|---|---|---|
+| `Core` | `GameManager`, `DifficultySettings`, `GameSession`, `AudioManager`, `PhysicsUtil` | estado da partida, vitória/derrota, tempo, recursos, níveis, sons |
+| `Path` | `EnemyPath` | caminho fixo (waypoints) |
+| `Enemies` | `Enemy`, `HealthBar` | movimento, vida, dano, lentidão, chegada à base |
+| `Waves` | `WaveSpawner` | geração das ondas (coroutine) |
+| `Towers` | `Tower`, `Projectile`, `LightSource` | detecção, mira, disparo, projéteis, luz e sombra |
+| `Base` | `Lighthouse` | colisão de inimigos com o farol |
+| `Building` | `BuildSpot`, `BuildManager` | construção/venda de torres com mouse ou toque |
+| `UI` | `HUD`, `MainMenu` | interface da partida e menu |
+| `Ranking` | `RankingManager` | ranking local (PlayerPrefs) |
+
+Como montar prefabs e cenas: [Docs/MONTAGEM_DA_CENA.md](Docs/MONTAGEM_DA_CENA.md).
+
+Versão do Unity: **6000.3** (URP 2D, Input System).
+
+---
+
+# Game Design Document
+
 1. Visão geral
 Lightkeeper é um jogo do gênero Tower Defense desenvolvido na Unity 2D.
 O jogador deve proteger um farol contra criaturas sombrias utilizando torres defensivas e a luz como principal mecânica de combate.
