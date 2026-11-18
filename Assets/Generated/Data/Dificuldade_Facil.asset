@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c434f479e8609440cf0a5462ee0792ed, type: 3}
+  m_Name: Dificuldade_Facil
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultySettings
+  displayName: "F\xE1cil"
+  description: 3 ondas, farol resistente e mais luz inicial.
+  baseMaxHealth: 20
+  maxEnemiesAtBase: 0
+  timeLimitSeconds: 300
+  minKillsToWin: 10
+  startingCurrency: 150
+  enemyHealthMultiplier: 1
+  enemySpeedMultiplier: 1
+  firstWaveDelay: 5
+  timeBetweenWaves: 6
+  waitForWaveCleared: 1
+  waves:
+  - name: Onda 1
+    groups:
+    - enemyPrefab: {fileID: 4959646936887715035, guid: 5be2f54b036f7384dba3032480ceb9ce, type: 3}
+      count: 6
+      spawnInterval: 1.5
+      delayBefore: 0
+      pathIndex: 0
+  - name: Onda 2
+    groups:
+    - enemyPrefab: {fileID: 4959646936887715035, guid: 5be2f54b036f7384dba3032480ceb9ce, type: 3}
+      count: 10
+      spawnInterval: 1
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 8579016551599191864, guid: 822bee8500719114d898c4b0fb820b8b, type: 3}
+      count: 2
+      spawnInterval: 3
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 3
+    groups:
+    - enemyPrefab: {fileID: 4959646936887715035, guid: 5be2f54b036f7384dba3032480ceb9ce, type: 3}
+      count: 12
+      spawnInterval: 0.8
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 8579016551599191864, guid: 822bee8500719114d898c4b0fb820b8b, type: 3}
+      count: 5
+      spawnInterval: 2.5
+      delayBefore: 1
+      pathIndex: 0

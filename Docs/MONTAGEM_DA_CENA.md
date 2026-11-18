@@ -1,7 +1,30 @@
 # Montagem das cenas no Unity
 
-Os scripts ficam em `Assets/Scripts`. Este guia mostra como ligá-los na cena. Tudo usa
-geometria simples (quadrados e círculos do *Create > 2D > Sprites*), então dá pra montar sem arte final.
+## Jeito rápido: montador automático
+
+O script de editor `Assets/Scripts/Editor/LightkeeperBuilder.cs` monta tudo sozinho:
+sprites geométricos, sons sintetizados (`.wav`), prefabs, as dificuldades Fácil e Difícil e as cenas
+`MainMenu` e `GameScene` (com o trajeto seguindo a estrada desenhada em `Fundo.jpeg`).
+
+- **Lightkeeper > Montar jogo completo**: recria `Assets/Generated` e **sobrescreve** as duas cenas.
+- **Lightkeeper > Gerar executável Windows**: gera `Builds/Windows/Lightkeeper.exe`.
+
+Os valores (vida, velocidade, custo, ondas, posições do caminho e dos pedestais) estão no topo e nos
+métodos `CreatePrefabs` / `CreateDifficulties` do builder. Dá para ajustar lá e montar de novo, ou
+editar direto os prefabs/assets em `Assets/Generated` (mas rodar o montador de novo desfaz isso).
+
+### Teste automático
+Ferramenta de desenvolvimento (`Assets/Scripts/Debug/AutoTest.cs`), só ativa com argumento:
+```
+Lightkeeper.exe -autotest C:\pasta\saida -autotest-difficulty 0
+```
+Joga sozinho (compra torres, acelera o tempo), salva prints e um `autotest.log` com o resultado.
+
+---
+
+## Jeito manual (para entender as peças)
+
+Os scripts ficam em `Assets/Scripts`. As seções abaixo mostram como ligá-los na cena à mão.
 
 > Projeto configurado com o **Input System novo** (Player Settings > Active Input Handling = Input System Package).
 > O `BuildManager` já usa `Pointer`/`Mouse`/`Keyboard` desse pacote, então funciona com mouse e com toque (mobile).

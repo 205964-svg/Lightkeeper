@@ -86,7 +86,7 @@ public class HUD : MonoBehaviour
             towerButtons[i].onClick.AddListener(() => build.SelectTower(index));
 
             if (towerButtonLabels != null && i < towerButtonLabels.Length && towerButtonLabels[i] != null
-                && i < build.TowerPrefabs.Length)
+                && i < build.TowerPrefabs.Length && build.TowerPrefabs[i] != null)
             {
                 Tower t = build.TowerPrefabs[i];
                 towerButtonLabels[i].text = $"[{i + 1}] {t.DisplayName}\n{t.Cost} luz";
@@ -120,7 +120,8 @@ public class HUD : MonoBehaviour
         if (build != null && towerButtons != null)
         {
             for (int i = 0; i < towerButtons.Length && i < build.TowerPrefabs.Length; i++)
-                if (towerButtons[i] != null) towerButtons[i].interactable = gm.Currency >= build.TowerPrefabs[i].Cost;
+                if (towerButtons[i] != null && build.TowerPrefabs[i] != null)
+                    towerButtons[i].interactable = gm.Currency >= build.TowerPrefabs[i].Cost;
         }
 
         if (messageTimer > 0f)
