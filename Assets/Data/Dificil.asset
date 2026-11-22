@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c434f479e8609440cf0a5462ee0792ed, type: 3}
+  m_Name: Dificil
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultySettings
+  displayName: "Dif\xEDcil"
+  description: "5 ondas, inimigos mais fortes e r\xE1pidos. O farol aguenta pouco."
+  baseMaxHealth: 12
+  maxEnemiesAtBase: 8
+  timeLimitSeconds: 270
+  minKillsToWin: 15
+  startingCurrency: 90
+  enemyHealthMultiplier: 1.4
+  enemySpeedMultiplier: 1.2
+  firstWaveDelay: 5
+  timeBetweenWaves: 6
+  waitForWaveCleared: 1
+  waves:
+  - name: Onda 1
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 8
+      spawnInterval: 0.8
+      delayBefore: 0
+      pathIndex: 0
+  - name: Onda 2
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 10
+      spawnInterval: 0.7
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 3
+      spawnInterval: 2
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 3
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 12
+      spawnInterval: 0.6
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 4
+      spawnInterval: 1.8
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 4
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 14
+      spawnInterval: 0.5
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 5
+      spawnInterval: 1.5
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 5
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 16
+      spawnInterval: 0.5
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 6
+      spawnInterval: 1.5
+      delayBefore: 1
+      pathIndex: 0
