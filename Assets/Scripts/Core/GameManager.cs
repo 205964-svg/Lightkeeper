@@ -111,7 +111,8 @@ public class GameManager : MonoBehaviour
         if (!IsPlaying) return;
         Kills++;
         Score += enemy.ScoreValue;
-        AddCurrency(enemy.Reward); // já dispara StatsChanged
+        // A luz ganha é ajustada pela dificuldade (mais inimigos = menos luz por abate).
+        AddCurrency(Mathf.Max(1, Mathf.RoundToInt(enemy.Reward * Difficulty.rewardMultiplier))); // já dispara StatsChanged
     }
 
     /// <summary>Chamado quando um inimigo alcança o farol (colisão com o Lighthouse).</summary>
