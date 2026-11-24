@@ -28,6 +28,8 @@ public class DifficultySettings : ScriptableObject
 
     [Header("Economia")]
     public int startingCurrency = 100;
+    [Tooltip("Multiplica a luz ganha por abate. Dificuldades com muitos inimigos usam < 1 para a luz não sobrar.")]
+    public float rewardMultiplier = 1f;
 
     [Header("Inimigos")]
     [Tooltip("Multiplica a vida de todos os inimigos.")]

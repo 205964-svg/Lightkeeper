@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c434f479e8609440cf0a5462ee0792ed, type: 3}
+  m_Name: Medio
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultySettings
+  displayName: "M\xE9dio"
+  description: "5 ondas. A Hidra de duas cabe\xE7as aparece a partir da 4\xAA onda."
+  baseMaxHealth: 16
+  maxEnemiesAtBase: 12
+  timeLimitSeconds: 330
+  minKillsToWin: 20
+  startingCurrency: 130
+  rewardMultiplier: 0.85
+  enemyHealthMultiplier: 1.2
+  enemySpeedMultiplier: 1.1
+  firstWaveDelay: 5
+  timeBetweenWaves: 7
+  waitForWaveCleared: 1
+  waves:
+  - name: Onda 1
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 8
+      spawnInterval: 1
+      delayBefore: 0
+      pathIndex: 0
+  - name: Onda 2
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 10
+      spawnInterval: 0.8
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 3
+      spawnInterval: 2.2
+      delayBefore: 1.5
+      pathIndex: 0
+  - name: Onda 3
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 12
+      spawnInterval: 0.7
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 4
+      spawnInterval: 2
+      delayBefore: 1.5
+      pathIndex: 0
+  - name: Onda 4
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 10
+      spawnInterval: 0.6
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 3
+      spawnInterval: 2
+      delayBefore: 1
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 2
+      spawnInterval: 3
+      delayBefore: 1.5
+      pathIndex: 0
+  - name: Onda 5
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 14
+      spawnInterval: 0.5
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 4
+      spawnInterval: 1.8
+      delayBefore: 1
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 4
+      spawnInterval: 2.5
+      delayBefore: 1.5
+      pathIndex: 0

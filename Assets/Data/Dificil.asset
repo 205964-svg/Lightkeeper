@@ -13,38 +13,27 @@ MonoBehaviour:
   m_Name: Dificil
   m_EditorClassIdentifier: Assembly-CSharp::DifficultySettings
   displayName: "Dif\xEDcil"
-  description: "5 ondas, inimigos mais fortes e r\xE1pidos. O farol aguenta pouco."
-  baseMaxHealth: 12
-  maxEnemiesAtBase: 8
-  timeLimitSeconds: 270
-  minKillsToWin: 15
-  startingCurrency: 90
-  enemyHealthMultiplier: 1.4
-  enemySpeedMultiplier: 1.2
+  description: "6 ondas, Hidras desde a 2\xAA onda. O farol aguenta pouco."
+  baseMaxHealth: 10
+  maxEnemiesAtBase: 6
+  timeLimitSeconds: 360
+  minKillsToWin: 30
+  startingCurrency: 110
+  rewardMultiplier: 0.7
+  enemyHealthMultiplier: 1.6
+  enemySpeedMultiplier: 1.25
   firstWaveDelay: 5
-  timeBetweenWaves: 6
+  timeBetweenWaves: 5
   waitForWaveCleared: 1
   waves:
   - name: Onda 1
-    groups:
-    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
-      count: 8
-      spawnInterval: 0.8
-      delayBefore: 0
-      pathIndex: 0
-  - name: Onda 2
     groups:
     - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
       count: 10
       spawnInterval: 0.7
       delayBefore: 0
       pathIndex: 0
-    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
-      count: 3
-      spawnInterval: 2
-      delayBefore: 1
-      pathIndex: 0
-  - name: Onda 3
+  - name: Onda 2
     groups:
     - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
       count: 12
@@ -52,11 +41,16 @@ MonoBehaviour:
       delayBefore: 0
       pathIndex: 0
     - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
-      count: 4
+      count: 3
       spawnInterval: 1.8
       delayBefore: 1
       pathIndex: 0
-  - name: Onda 4
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 1
+      spawnInterval: 3
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 3
     groups:
     - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
       count: 14
@@ -64,19 +58,63 @@ MonoBehaviour:
       delayBefore: 0
       pathIndex: 0
     - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 4
+      spawnInterval: 1.6
+      delayBefore: 1
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 2
+      spawnInterval: 2.5
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 4
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 16
+      spawnInterval: 0.45
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
       count: 5
       spawnInterval: 1.5
+      delayBefore: 1
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 3
+      spawnInterval: 2.2
       delayBefore: 1
       pathIndex: 0
   - name: Onda 5
     groups:
     - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
-      count: 16
-      spawnInterval: 0.5
+      count: 18
+      spawnInterval: 0.4
       delayBefore: 0
       pathIndex: 0
     - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
       count: 6
-      spawnInterval: 1.5
+      spawnInterval: 1.4
+      delayBefore: 1
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 4
+      spawnInterval: 2
+      delayBefore: 1
+      pathIndex: 0
+  - name: Onda 6
+    groups:
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 33e753b3d35e85d48a8d06480f6ae127, type: 3}
+      count: 20
+      spawnInterval: 0.35
+      delayBefore: 0
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 0ff26b37c8bcbcb429b9910ddb8aa5f4, type: 3}
+      count: 6
+      spawnInterval: 1.2
+      delayBefore: 1
+      pathIndex: 0
+    - enemyPrefab: {fileID: 3496564823739041047, guid: 4c8ad5f560bed234995b3b67d695dd4d, type: 3}
+      count: 6
+      spawnInterval: 1.8
       delayBefore: 1
       pathIndex: 0

@@ -19,6 +19,7 @@ MonoBehaviour:
   timeLimitSeconds: 300
   minKillsToWin: 5
   startingCurrency: 120
+  rewardMultiplier: 1
   enemyHealthMultiplier: 1
   enemySpeedMultiplier: 1
   firstWaveDelay: 5
