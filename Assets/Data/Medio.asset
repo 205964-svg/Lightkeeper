@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: "M\xE9dio"
   description: "5 ondas. A Hidra de duas cabe\xE7as aparece a partir da 4\xAA onda."
   baseMaxHealth: 16
-  maxEnemiesAtBase: 12
+  maxEnemiesAtBase: 0
   timeLimitSeconds: 330
   minKillsToWin: 20
   startingCurrency: 130

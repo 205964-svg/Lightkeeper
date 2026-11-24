@@ -67,7 +67,7 @@ public static class DifficultyBuilder
         medio.displayName = "Médio";
         medio.description = "5 ondas. A Hidra de duas cabeças aparece a partir da 4ª onda.";
         medio.baseMaxHealth = 16;
-        medio.maxEnemiesAtBase = 12;
+        medio.maxEnemiesAtBase = 0; // derrota só pela vida do farol (o limite confundia o jogador)
         medio.timeLimitSeconds = 330f;
         medio.minKillsToWin = 20;
         medio.startingCurrency = 130;
@@ -90,25 +90,28 @@ public static class DifficultyBuilder
         DifficultySettings dificil = LoadOrCreate("Dificil");
         dificil.displayName = "Difícil";
         dificil.description = "6 ondas, Hidras desde a 2ª onda. O farol aguenta pouco.";
-        dificil.baseMaxHealth = 10;
-        dificil.maxEnemiesAtBase = 6;
+        dificil.baseMaxHealth = 14;
+        dificil.maxEnemiesAtBase = 0; // derrota só pela vida do farol (o limite confundia o jogador)
         dificil.timeLimitSeconds = 360f;
-        dificil.minKillsToWin = 30;
-        dificil.startingCurrency = 110;
-        dificil.rewardMultiplier = 0.7f;
-        dificil.enemyHealthMultiplier = 1.6f;
-        dificil.enemySpeedMultiplier = 1.25f;
-        dificil.firstWaveDelay = 5f;
-        dificil.timeBetweenWaves = 5f;
+        // Valores aliviados após teste: a versão anterior (vida x1.6, 152 inimigos) era impossível.
+        dificil.minKillsToWin = 25;
+        dificil.startingCurrency = 150;
+        dificil.rewardMultiplier = 0.8f;
+        dificil.enemyHealthMultiplier = 1.3f;
+        dificil.enemySpeedMultiplier = 1.15f;
+        dificil.firstWaveDelay = 6f;
+        dificil.timeBetweenWaves = 7f;
         dificil.waitForWaveCleared = true;
+        // No Difícil os tipos vêm MISTURADOS (Colossos e Hidras no meio das Sombras),
+        // em vez de um grupo inteiro depois do outro. Mesmas quantidades e intervalos.
         dificil.waves = new List<Wave>
         {
-            W("Onda 1", G(sombra, 10, 0.7f)),
-            W("Onda 2", G(sombra, 12, 0.6f), G(colosso, 3, 1.8f, 1f), G(hidra, 1, 3.0f, 1f)),
-            W("Onda 3", G(sombra, 14, 0.5f), G(colosso, 4, 1.6f, 1f), G(hidra, 2, 2.5f, 1f)),
-            W("Onda 4", G(sombra, 16, 0.45f), G(colosso, 5, 1.5f, 1f), G(hidra, 3, 2.2f, 1f)),
-            W("Onda 5", G(sombra, 18, 0.4f), G(colosso, 6, 1.4f, 1f), G(hidra, 4, 2.0f, 1f)),
-            W("Onda 6", G(sombra, 20, 0.35f), G(colosso, 6, 1.2f, 1f), G(hidra, 6, 1.8f, 1f)),
+            W("Onda 1", G(sombra, 8, 0.9f)),
+            Mixed("Onda 2", (sombra, 10, 0.75f), (colosso, 2, 2.2f), (hidra, 1, 3.0f)),
+            Mixed("Onda 3", (sombra, 12, 0.65f), (colosso, 3, 2.0f), (hidra, 1, 3.0f)),
+            Mixed("Onda 4", (sombra, 12, 0.6f), (colosso, 4, 1.8f), (hidra, 2, 2.8f)),
+            Mixed("Onda 5", (sombra, 14, 0.55f), (colosso, 4, 1.7f), (hidra, 3, 2.5f)),
+            Mixed("Onda 6", (sombra, 16, 0.5f), (colosso, 5, 1.6f), (hidra, 4, 2.2f)),
         };
         EditorUtility.SetDirty(dificil);
         AssetDatabase.SaveAssets();
@@ -207,4 +210,27 @@ public static class DifficultyBuilder
 
     private static Wave W(string name, params WaveGroup[] groups) =>
         new Wave { name = name, groups = new List<WaveGroup>(groups) };
+
+    /// <summary>
+    /// Onda com tipos misturados: cada inimigo recebe uma "posição ideal" (i+0.5)/quantidade na onda,
+    /// todos são ordenados por essa posição, e inimigos seguidos do mesmo tipo viram um grupo só.
+    /// Ex.: 10 Sombras + 2 Colossos → S S S C S S S S C S S S (distribuição uniforme).
+    /// </summary>
+    private static Wave Mixed(string name, params (Enemy prefab, int count, float interval)[] types)
+    {
+        var spawns = new List<(float pos, int type)>();
+        for (int t = 0; t < types.Length; t++)
+            for (int i = 0; i < types[t].count; i++)
+                spawns.Add(((i + 0.5f) / types[t].count, t));
+        spawns.Sort((a, b) => a.pos != b.pos ? a.pos.CompareTo(b.pos) : a.type.CompareTo(b.type));
+
+        var groups = new List<WaveGroup>();
+        foreach (var s in spawns)
+        {
+            WaveGroup last = groups.Count > 0 ? groups[groups.Count - 1] : null;
+            if (last != null && last.enemyPrefab == types[s.type].prefab) last.count++;
+            else groups.Add(G(types[s.type].prefab, 1, types[s.type].interval));
+        }
+        return new Wave { name = name, groups = groups };
+    }
 }
